@@ -3,6 +3,9 @@
 <head>
     <title>Ofisiant Paneli</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        label { display: block; margin: 5px 0; font-size: 16px; }
+    </style>
 </head>
 <body>
 
@@ -12,68 +15,66 @@
 <input id="table" type="number" placeholder="Masa nömrəsi">
 
 <h2>Sifariş:</h2>
-<select id="meal">
+<div id="meal-options">
     <!-- Dönərlər -->
-    <option>Tombik Toyuq</option>
-    <option>Tombik Mal</option>
-    <option>Kiçik Təndir Toyuq</option>
-    <option>Kiçik Təndir Mal</option>
-    <option>Böyük Təndir Toyuq</option>
-    <option>Böyük Təndir Mal</option>
-    <option>Lavaşda Dönər Toyuq</option>
-    <option>Lavaşda Dönər Mal</option>
+    <label><input type="checkbox" value="Tombik Toyuq"> Tombik Toyuq</label>
+    <label><input type="checkbox" value="Tombik Mal"> Tombik Mal</label>
+    <label><input type="checkbox" value="Kiçik Təndir Toyuq"> Kiçik Təndir Toyuq</label>
+    <label><input type="checkbox" value="Kiçik Təndir Mal"> Kiçik Təndir Mal</label>
+    <label><input type="checkbox" value="Böyük Təndir Toyuq"> Böyük Təndir Toyuq</label>
+    <label><input type="checkbox" value="Böyük Təndir Mal"> Böyük Təndir Mal</label>
+    <label><input type="checkbox" value="Lavaşda Dönər Toyuq"> Lavaşda Dönər Toyuq</label>
+    <label><input type="checkbox" value="Lavaşda Dönər Mal"> Lavaşda Dönər Mal</label>
 
     <!-- Basdırma -->
-    <option>Basdırma Toyuq</option>
-    <option>Basdırma Mal</option>
+    <label><input type="checkbox" value="Basdırma Toyuq"> Basdırma Toyuq</label>
+    <label><input type="checkbox" value="Basdırma Mal"> Basdırma Mal</label>
 
     <!-- Adana -->
-    <option>Adana Toyuq</option>
-    <option>Adana Mal</option>
+    <label><input type="checkbox" value="Adana Toyuq"> Adana Toyuq</label>
+    <label><input type="checkbox" value="Adana Mal"> Adana Mal</label>
 
     <!-- Lavaşda -->
-    <option>Lavaşda Toyuq</option>
-    <option>Lavaşda Mal</option>
+    <label><input type="checkbox" value="Lavaşda Toyuq"> Lavaşda Toyuq</label>
+    <label><input type="checkbox" value="Lavaşda Mal"> Lavaşda Mal</label>
 
     <!-- Şaurma -->
-    <option>Şaurma Çörəkdə Toyuq</option>
-    <option>Şaurma Çörəkdə Mal</option>
-    <option>Şaurma Lavaşda Toyuq</option>
-    <option>Şaurma Lavaşda Mal</option>
+    <label><input type="checkbox" value="Şaurma Çörəkdə Toyuq"> Şaurma Çörəkdə Toyuq</label>
+    <label><input type="checkbox" value="Şaurma Çörəkdə Mal"> Şaurma Çörəkdə Mal</label>
+    <label><input type="checkbox" value="Şaurma Lavaşda Toyuq"> Şaurma Lavaşda Toyuq</label>
+    <label><input type="checkbox" value="Şaurma Lavaşda Mal"> Şaurma Lavaşda Mal</label>
 
     <!-- Köftə -->
-    <option>Köftə Çörəkdə Toyuq</option>
-    <option>Köftə Çörəkdə Mal</option>
-    <option>Köftə Lavaşda Toyuq</option>
-    <option>Köftə Lavaşda Mal</option>
+    <label><input type="checkbox" value="Köftə Çörəkdə Toyuq"> Köftə Çörəkdə Toyuq</label>
+    <label><input type="checkbox" value="Köftə Çörəkdə Mal"> Köftə Çörəkdə Mal</label>
+    <label><input type="checkbox" value="Köftə Lavaşda Toyuq"> Köftə Lavaşda Toyuq</label>
+    <label><input type="checkbox" value="Köftə Lavaşda Mal"> Köftə Lavaşda Mal</label>
 
     <!-- Burger və Hamburger -->
-    <option>Burger Toyuq</option>
-    <option>Burger Mal</option>
-    <option>Hamburger</option>
+    <label><input type="checkbox" value="Burger Toyuq"> Burger Toyuq</label>
+    <label><input type="checkbox" value="Burger Mal"> Burger Mal</label>
+    <label><input type="checkbox" value="Hamburger"> Hamburger</label>
 
-    <!-- Sandviç -->
-    <option>Sandviç Böyük</option>
-    <option>Sandviç Kiçik</option>
-
-    <!-- Sosis -->
-    <option>Sosis Böyük</option>
-    <option>Sosis Kiçik</option>
+    <!-- Sandviç və Sosis -->
+    <label><input type="checkbox" value="Sandviç Böyük"> Sandviç Böyük</label>
+    <label><input type="checkbox" value="Sandviç Kiçik"> Sandviç Kiçik</label>
+    <label><input type="checkbox" value="Sosis Böyük"> Sosis Böyük</label>
+    <label><input type="checkbox" value="Sosis Kiçik"> Sosis Kiçik</label>
 
     <!-- Kartof -->
-    <option>Kartof Fri</option>
+    <label><input type="checkbox" value="Kartof Fri"> Kartof Fri</label>
 
     <!-- Setlər -->
-    <option>Set 1</option>
-    <option>Set 2</option>
-    <option>Set 3</option>
-    <option>Set 4</option>
-    <option>Set 5</option>
-    <option>Set 6</option>
+    <label><input type="checkbox" value="Set 1"> Set 1</label>
+    <label><input type="checkbox" value="Set 2"> Set 2</label>
+    <label><input type="checkbox" value="Set 3"> Set 3</label>
+    <label><input type="checkbox" value="Set 4"> Set 4</label>
+    <label><input type="checkbox" value="Set 5"> Set 5</label>
+    <label><input type="checkbox" value="Set 6"> Set 6</label>
 
     <!-- Kampaniya -->
-    <option>Dönər + Ayran 2m</option>
-</select>
+    <label><input type="checkbox" value="Dönər + Ayran 2m"> Kampaniya (Dönər + Ayran 2m)</label>
+</div>
 
 <h2>Qeyd:</h2>
 <input id="note" type="text" placeholder="Məs: Acılı, sous az olsun...">
@@ -89,25 +90,27 @@ const audio = new Audio("order.mp3");
 
 function sendOrder() {
     const table = document.getElementById("table").value;
-    const meal  = document.getElementById("meal").value;
-    const note  = document.getElementById("note").value;
+    if (!table) { alert("Masa nömrəsi daxil olunmalıdır!"); return; }
 
-    if (!table) { 
-        alert("Masa nömrəsi daxil olunmalıdır!"); 
-        return; 
-    }
+    const selectedMeals = [];
+    document.querySelectorAll('#meal-options input[type=checkbox]:checked').forEach(cb => {
+        selectedMeals.push(cb.value);
+    });
 
-    const order = { meal, table, note, time: new Date().toLocaleTimeString() };
+    if (selectedMeals.length === 0) { alert("Ən azı 1 məhsul seçilməlidir!"); return; }
 
-    // Firebase Realtime Database
+    const note = document.getElementById("note").value;
+    const order = { meals: selectedMeals, table, note, time: new Date().toLocaleTimeString() };
+
     database.ref("orders").push(order)
         .then(() => {
             audio.play();
             alert("✔ Sifariş mətbəxə göndərildi!");
             document.getElementById("table").value = "";
             document.getElementById("note").value = "";
+            document.querySelectorAll('#meal-options input[type=checkbox]').forEach(cb => cb.checked = false);
         })
-        .catch((error) => {
+        .catch(error => {
             alert("❌ Sifarişi göndərmək mümkün olmadı: " + error);
         });
 }
