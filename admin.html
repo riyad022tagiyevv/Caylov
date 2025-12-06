@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Girişi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🔐 Admin Girişi</h1>
+
+Şifrə:
+<input id="pass" type="password">
+<button onclick="login()">Daxil ol</button>
+
+<script>
+function login() {
+    if (document.getElementById("pass").value === "1986") {
+        window.location.href = "admin_panel.html";
+    } else { alert("❌ Yanlış şifrə!"); }
+}
+</script>
+
+</body>
+</html>
