@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mətbəx Paneli</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🔥 Mətbəx Paneli</h1>
+<div id="orders"></div>
+
+<audio id="sound" src="order.mp3"></audio>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="firebase.js"></script>
+
+<script>
+const sound = document.getElementById("sound");
+
+function loadOrders() {
+    database.ref("orders").on("value", snapshot => {
+        const orders = snapshot.val() || {};
+        const div = document.getElementById("orders");
+        div.innerHTML = "";
+        Object.keys(orders).forEach(key => {
+            const o = orders[key];
+            div.innerHTML += `
+                <div style='background:white;padding:20px;margin-top:20px;border-radius:10px'>
+                    🍽 <b>${o.meal}</b><br>
+                    🪑 Masa: ${o.table}<br>
+                    📝 Qeyd: ${o.note || "Yoxdur"}<br>
+                    ⏱ ${o.time}<br><br>
+                    <button onclick="accept('${key}')">✔ Qəbul edildi</button>
+                </div>
+            `;
+        });
+
+        if (Object.keys(orders).length) sound.play();
+    });
+}
+
+function accept(key) {
+    database.ref("orders/" + key).remove();
+}
+
+loadOrders();
+</script>
+
+</body>
+</html>
