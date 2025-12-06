@@ -26,6 +26,7 @@
 <script src="firebase.js"></script>
 
 <script>
+// Sifarişləri yükləmək
 function loadOrders() {
     database.ref("orders").on("value", snapshot => {
         const orders = snapshot.val() || {};
@@ -37,17 +38,27 @@ function loadOrders() {
                 <div style='background:white;padding:20px;margin-top:15px;border-radius:10px'>
                     🍽 ${o.meal} — 🪑 Masa ${o.table}<br>
                     📝 ${o.note || "Qeyd yoxdur"}<br>
-                    ⏱ ${o.time}
+                    ⏱ ${o.time}<br>
+                    <button onclick="deleteOrder('${key}')">🗑 Sil Sifarişi</button>
                 </div>
             `;
         });
     });
 }
 
+// Sifarişi silmək
+function deleteOrder(key) {
+    if (confirm("Bu sifarişi silmək istədiyinizə əminsiniz?")) {
+        database.ref("orders/" + key).remove()
+            .then(() => alert("✔ Sifariş silindi!"))
+            .catch(err => alert("❌ Xəta: " + err));
+    }
+}
+
+// Cərimə əlavə etmək
 function addFine() {
     const ad = document.getElementById("ad").value;
     const text = document.getElementById("fine").value;
-
     if (!ad || !text) { alert("Ad və cərimə daxil olunmalıdır!"); return; }
 
     database.ref("fines").push({ad, text});
@@ -55,10 +66,7 @@ function addFine() {
     document.getElementById("fine").value = "";
 }
 
-function removeFine(key) {
-    database.ref("fines/" + key).remove();
-}
-
+// Cərimələri göstərmək
 function loadFines() {
     database.ref("fines").on("value", snapshot => {
         const fines = snapshot.val() || {};
@@ -77,6 +85,12 @@ function loadFines() {
     });
 }
 
+// Cəriməni silmək
+function removeFine(key) {
+    database.ref("fines/" + key).remove();
+}
+
+// Yükləmələri işə salırıq
 loadOrders();
 loadFines();
 </script>
