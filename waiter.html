@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ofisiant Paneli</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🍽 Ofisiant Paneli</h1>
+
+<h2>Masa:</h2>
+<input id="table" type="number" placeholder="Masa nömrəsi">
+
+<h2>Sifariş:</h2>
+<select id="meal">
+    <option>Dönər</option>
+    <option>Lavash</option>
+    <option>Pepsi</option>
+    <option>Çay</option>
+    <option>Fri Kartof</option>
+</select>
+
+<h2>Qeyd:</h2>
+<input id="note" type="text" placeholder="Məs: Acılı, sous az olsun...">
+
+<button onclick="sendOrder()">📤 Sifarişi Göndər</button>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="firebase.js"></script>
+<script>
+const audio = new Audio("order.mp3");
+
+function sendOrder() {
+    const table = document.getElementById("table").value;
+    const meal  = document.getElementById("meal").value;
+    const note  = document.getElementById("note").value;
+
+    if (!table) { alert("Masa nömrəsi daxil olunmalıdır!"); return; }
+
+    const order = { meal, table, note, time: new Date().toLocaleTimeString() };
+
+    // Firebase Realtime Database
+    database.ref("orders").push(order)
+        .then(() => {
+            audio.play();
+            alert("✔ Sifariş mətbəxə göndərildi!");
+            document.getElementById("table").value = "";
+            document.getElementById("note").value = "";
+        });
+}
+</script>
+
+</body>
+</html>
