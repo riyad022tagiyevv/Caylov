@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Paneli</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>⚙ Admin Paneli</h1>
+
+<h2>📋 Sifariş Arxivi</h2>
+<div id="orders"></div>
+
+<hr>
+
+<h2>⚠ Cərimə əlavə et</h2>
+<input id="ad" type="text" placeholder="Ad">
+<input id="fine" type="text" placeholder="Cərimə mətni">
+<button onclick="addFine()">Əlavə et</button>
+
+<h2>Mövcud cərimələr:</h2>
+<div id="fines"></div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="firebase.js"></script>
+
+<script>
+function loadOrders() {
+    database.ref("orders").on("value", snapshot => {
+        const orders = snapshot.val() || {};
+        const div = document.getElementById("orders");
+        div.innerHTML = "";
+        Object.keys(orders).forEach(key => {
+            const o = orders[key];
+            div.innerHTML += `
+                <div style='background:white;padding:20px;margin-top:15px;border-radius:10px'>
+                    🍽 ${o.meal} — 🪑 Masa ${o.table}<br>
+                    📝 ${o.note || "Qeyd yoxdur"}<br>
+                    ⏱ ${o.time}
+                </div>
+            `;
+        });
+    });
+}
+
+function addFine() {
+    const ad = document.getElementById("ad").value;
+    const text = document.getElementById("fine").value;
+
+    if (!ad || !text) { alert("Ad və cərimə daxil olunmalıdır!"); return; }
+
+    database.ref("fines").push({ad, text});
+    document.getElementById("ad").value = "";
+    document.getElementById("fine").value = "";
+}
+
+function removeFine(key) {
+    database.ref("fines/" + key).remove();
+}
+
+function loadFines() {
+    database.ref("fines").on("value", snapshot => {
+        const fines = snapshot.val() || {};
+        const div = document.getElementById("fines");
+        div.innerHTML = "";
+        Object.keys(fines).forEach(key => {
+            const f = fines[key];
+            div.innerHTML += `
+                <div style='background:#ffe5e5;padding:15px;margin-top:10px;border-radius:10px'>
+                    <b>Ad:</b> ${f.ad}<br>
+                    <b>Cərimə:</b> ${f.text}<br>
+                    <button onclick="removeFine('${key}')">Sil</button>
+                </div>
+            `;
+        });
+    });
+}
+
+loadOrders();
+loadFines();
+</script>
+
+</body>
+</html>
