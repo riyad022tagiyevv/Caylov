@@ -13,11 +13,55 @@
 
 <h2>Sifariş:</h2>
 <select id="meal">
-    <option>Dönər</option>
-    <option>Lavash</option>
-    <option>Pepsi</option>
-    <option>Çay</option>
-    <option>Fri Kartof</option>
+    <!-- Dönərlər -->
+    <option>Tombik Toyuq</option>
+    <option>Tombik Mal</option>
+    <option>Kiçik Təndir Toyuq</option>
+    <option>Kiçik Təndir Mal</option>
+    <option>Böyük Təndir Toyuq</option>
+    <option>Böyük Təndir Mal</option>
+    <option>Lavaşda Dönər Toyuq</option>
+    <option>Lavaşda Dönər Mal</option>
+
+    <!-- Basdırma -->
+    <option>Basdırma Toyuq</option>
+    <option>Basdırma Mal</option>
+
+    <!-- Adana -->
+    <option>Adana Toyuq</option>
+    <option>Adana Mal</option>
+
+    <!-- Lavaşda -->
+    <option>Lavaşda Toyuq</option>
+    <option>Lavaşda Mal</option>
+
+    <!-- Şaurma -->
+    <option>Şaurma Çörəkdə Toyuq</option>
+    <option>Şaurma Çörəkdə Mal</option>
+    <option>Şaurma Lavaşda Toyuq</option>
+    <option>Şaurma Lavaşda Mal</option>
+
+    <!-- Köftə -->
+    <option>Köftə Çörəkdə Toyuq</option>
+    <option>Köftə Çörəkdə Mal</option>
+    <option>Köftə Lavaşda Toyuq</option>
+    <option>Köftə Lavaşda Mal</option>
+
+    <!-- Burger və Hamburger -->
+    <option>Burger Toyuq</option>
+    <option>Burger Mal</option>
+    <option>Hamburger</option>
+
+    <!-- Sandviç -->
+    <option>Sandviç Böyük</option>
+    <option>Sandviç Kiçik</option>
+
+    <!-- Sosis -->
+    <option>Sosis Böyük</option>
+    <option>Sosis Kiçik</option>
+
+    <!-- Kartof -->
+    <option>Kartof Fri</option>
 </select>
 
 <h2>Qeyd:</h2>
@@ -36,7 +80,10 @@ function sendOrder() {
     const meal  = document.getElementById("meal").value;
     const note  = document.getElementById("note").value;
 
-    if (!table) { alert("Masa nömrəsi daxil olunmalıdır!"); return; }
+    if (!table) { 
+        alert("Masa nömrəsi daxil olunmalıdır!"); 
+        return; 
+    }
 
     const order = { meal, table, note, time: new Date().toLocaleTimeString() };
 
@@ -47,6 +94,9 @@ function sendOrder() {
             alert("✔ Sifariş mətbəxə göndərildi!");
             document.getElementById("table").value = "";
             document.getElementById("note").value = "";
+        })
+        .catch((error) => {
+            alert("❌ Sifarişi göndərmək mümkün olmadı: " + error);
         });
 }
 </script>
